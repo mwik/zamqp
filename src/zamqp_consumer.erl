@@ -139,7 +139,7 @@ handle_info(connect, State = #state{host=Host,exchange=Exchange,queue=Queue}) ->
 handle_info(beat, State) ->
     State1 =
         try beat(State)
-        catch ?WITH_STACKTRACE(Class, Reason, Stacktrace)
+        catch ?WITH_STACKTRACE(Class, Reason, _Stacktrace)
                 #state{host = Host, port = Port, connection = Con} = State,
                 close_prejudice(Con),
                 ?ERROR("Failed to beat ~p:~p: ~p:~p",
@@ -201,7 +201,7 @@ do_connect(State = #state{user = User, pass = Pass, host = Host, port=Port}) ->
     try setup(Con, State) of
         {ok, CTag, Con1} -> {HeartBeat, CTag, Con1}
     catch
-        ?WITH_STACKTRACE(Class, Reason, Stacktrace)
+        ?WITH_STACKTRACE(Class, Reason, _Stacktrace)
             zamqp_conn:close_prejudice(Con),
             erlang:Class(Reason)
     end.
