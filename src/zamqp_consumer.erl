@@ -287,7 +287,7 @@ handle(Bin, State = #state{module = Mod, type=Type,tag=CTag,connection=Con}) ->
 
 relay(Mod, Arity, Key, Body) ->
     try case Arity of 1 ->  Mod:handle(Body); 2 -> Mod:handle(Key, Body) end of
-        ok -> ?INFO("Key: ~p Json: ~p Status: ~p Module: ~p", [Key, Body, ok, Mod]);
+        ok -> ?NOTICE("Key: ~p Json: ~p Status: ~p Module: ~p", [Key, Body, ok, Mod]);
         error -> ?ERROR("Key: ~p Json: ~p Status: ~p Module: ~p", [Key, Body, error, Mod])
     catch
         ?WITH_STACKTRACE(Class, Reason, Stacktrace)
