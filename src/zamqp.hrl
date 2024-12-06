@@ -8,6 +8,8 @@
 -define(DEBUG(M, Meta), zamqp_log:log(debug, M, Meta)).
 -define(INFO(M), zamqp_log:log(info, M)).
 -define(INFO(M,Meta), zamqp_log:log(info, M, Meta)).
+-define(NOTICE(M), zamqp_log:log(notice, M)).
+-define(NOTICE(M,Meta), zamqp_log:log(notice, M, Meta)).
 -define(WARNING(M), zamqp_log:log(warning, M)).
 -define(WARNING(M,Meta), zamqp_log:log(warning, M, Meta)).
 -define(ERROR(M), zamqp_log:log(error, M)).
